@@ -1,0 +1,25 @@
+// Rotates a camera frame by quarter turns (and optionally flips it vertically first) so a camera mounted on its
+// side, or a capture device that delivers upside-down frames, feeds the models an upright image.
+#pragma kernel Rotate
+
+Texture2D<float4> Source;
+RWTexture2D<float4> Result;
+uint SrcWidth;
+uint SrcHeight;
+uint DstWidth;
+uint DstHeight;
+int Rotation;      // quarter turns counter-clockwise as seen on screen: 0, 1, 2, 3
+int FlipVertical;  // 1 = the source is upside down
+
+[numthreads(8, 8, 1)]
+void Rotate(uint3 id : SV_DispatchThreadID)
+{
+    if (id.x >= DstWidth || id.y >= DstHeight) return;
+    uint2 s;
+    if (Rotation == 1)      s = uint2(id.y, SrcHeight - 1 - id.x);                 // 90 CCW
+    else if (Rotation == 2) s = uint2(SrcWidth - 1 - id.x, SrcHeight - 1 - id.y);  // 180
+    else if (Rotation == 3) s = uint2(SrcWidth - 1 - id.y, id.x);                  // 270 CCW (90 CW)
+    else                    s = id.xy;
+    if (FlipVertical) s.y = SrcHeight - 1 - s.y;
+    Result[id.xy] = Source[s];
+}

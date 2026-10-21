@@ -1,0 +1,22 @@
+# Normalise line endings; Unity is happy with LF everywhere.
+* text=auto eol=lf
+*.ps1 text eol=crlf
+
+# Unity YAML assets are text (merge-friendly)
+*.unity text
+*.prefab text
+*.asset text
+*.mat text
+*.meta text
+*.anim text
+*.controller text
+
+# Binary assets
+*.onnx binary
+*.fbx binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.mp4 binary
+*.exe binary
+*.dll binary

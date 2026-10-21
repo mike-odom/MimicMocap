@@ -1,0 +1,33 @@
+MimicMocap
+Copyright 2026 The MimicMocap authors
+
+Licensed under the Apache License, Version 2.0 (see LICENSE).
+
+This project includes or builds on the following third-party work:
+
+- MediaPipe BlazePose (pose detector + pose landmarker lite/full/heavy) and the MediaPipe hand
+  landmark model, Copyright Google LLC, Apache License 2.0, as packaged in ONNX form by Unity
+  Technologies at https://huggingface.co/unity/inference-engine-blaze-pose and
+  https://huggingface.co/unity/inference-engine-blaze-hand. The anchor table under Data/ is derived
+  from MediaPipe's SSD anchor configuration.
+
+- Portions of the landmark smoothing, visibility smoothing and region-of-interest tracking logic are
+  adapted from the MediaPipe framework, https://github.com/google-ai-edge/mediapipe,
+  Copyright 2019-2024 The MediaPipe Authors, Apache License 2.0.
+
+- NVIDIA Maxine AR SDK: the P/Invoke bindings in Scripts/Sources/Maxine follow the MIT-licensed
+  headers published at https://github.com/NVIDIA-Maxine/Maxine-AR-SDK. The SDK runtime (nvARPose.dll
+  and models) is NOT included; it is installed separately and is subject to NVIDIA's own licence.
+
+- KayKit Skeletons by Kay Lousberg (Assets/MimicMocap/Characters/KayKitSkeletons), CC0 1.0.
+
+- The One Euro Filter follows G. Casiez, N. Roussel and D. Vogel, "1 Euro Filter: A Simple
+  Speed-based Low-pass Filter for Noisy Input in Interactive Systems", CHI 2012. The implementation
+  here is original.
+
+- The VMC receiver implements the Virtual Motion Capture protocol as published at
+  https://protocol.vmc.info/. No VMC, uOSC or XR Animator code is included.
+
+Not included in this repository (download separately if you want them; see docs/TEST-MEDIA.md):
+Adobe Mixamo characters (Mixamo licence), the "Skeleton animated" rig, the test video frames and the
+MediaPipe reference hand photo used by the smoke tests.
