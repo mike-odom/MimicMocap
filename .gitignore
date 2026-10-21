@@ -49,3 +49,6 @@ crashlytics-build.properties
 # Research spike models (RTMW3D, large; see docs/research/2026-10-20-dropout-and-models-research.md)
 /Assets/MimicMocap/Spike/
 /Assets/MimicMocap/Spike.meta
+
+# Claude Code local state
+/.claude/
